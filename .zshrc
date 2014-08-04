@@ -19,6 +19,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
+export GOROOT="/usr/local/Cellar/go/1.2.2/libexec"
+export PATH=$PATH:$GOROOT/bin
 
 # Alt-direction word moving
 bindkey "^[^[[D" backward-word

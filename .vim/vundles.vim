@@ -24,6 +24,7 @@ Bundle "kien/ctrlp.vim"
 Bundle "tomtom/tcomment_vim"
 Bundle "tpope/vim-fugitive"
 Bundle "Rykka/riv.vim"
+Bundle "kchmck/vim-coffee-script"
 Bundle "majutsushi/tagbar"
 Bundle "plasticboy/vim-markdown"
 Bundle "Lokaltog/vim-easymotion"
@@ -40,6 +41,10 @@ Bundle "tpope/vim-repeat.git"
 Bundle "tpope/vim-surround.git"
 Bundle "bogado/file-line.git"
 Bundle "briandoll/change-inside-surroundings.vim"
+Bundle "jnwhiteh/vim-golang"
+Bundle "kien/rainbow_parentheses.vim"
+Bundle "nathanaelkane/vim-indent-guides"
+Bundle "dag/vim2hs"
 
 "Filetype plugin indent on is required by vundle
 filetype plugin indent on
