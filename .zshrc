@@ -12,6 +12,8 @@ fi
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias vinstall="vim +BundleInstall +qall"
+alias tls="tmux list-sessions"
+alias ta="tmux attach-session"
 
 # User configuration
 export DEFAULT_USER='neckbeard'
