@@ -1,6 +1,6 @@
 set nocompatible
 
-" ============= GENERAL CONFIG ==============
+" ============= Spencer is dum==============
 
 set number                      "Line numbers
 set backspace=indent,eol,start  "Allow backspace
