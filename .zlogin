@@ -14,9 +14,15 @@
   fi
 } &!
 
+# Print system information
+if (( $+commands[archey] )); then
+  archey -c
+  print
+fi
+
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
-  fortune -a
+  fortune -a | cowsay -f $(ls /usr/local/share/cows | gshuf -n1)
   print
 fi
 
