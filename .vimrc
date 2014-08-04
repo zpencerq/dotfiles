@@ -12,6 +12,7 @@ set visualbell                  "Disable sound
 set autoread                    "Reload files changed outside vim
 set encoding=utf-8
 set cc=80
+set lazyredraw
 
 " More natural split opening
 set splitbelow
