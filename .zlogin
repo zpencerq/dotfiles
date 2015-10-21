@@ -20,10 +20,11 @@ if (( $+commands[archey] )); then
   print
 fi
 
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
+
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
-  fortune -a | cowsay -f $(ls /usr/local/share/cows | gshuf -n1)
+  fortune | cowsay -f $(ls /usr/local/share/cows | gshuf -n1) | lolcat
   print
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
