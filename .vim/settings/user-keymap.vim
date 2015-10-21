@@ -54,6 +54,9 @@ nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-j> <C-w>j
 
+nnoremap <silent> tn :tabnext<CR>
+nnoremap <silent> tp :tabprev<CR>
+
 " Make gf (go to file) create the file, if not existent
 nnoremap gf :e<cfile><CR>
 nnoremap <C-w>f :sp +e<cfile><CR>
