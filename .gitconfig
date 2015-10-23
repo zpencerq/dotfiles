@@ -1,0 +1,21 @@
+[push]
+  default = simple
+[user]
+  email = zpencerq@users.noreply.github.com
+  name = Spencer Ellinor
+[branch]
+  autosetuprebase = always
+[color]
+  ui = 1
+[core]
+  autocrlf = input
+
+[alias]
+  watch = "!clear;fswatch $(git root) . | \
+    while read file; do \
+        clear;\
+        git status --short;\
+        git --no-pager diff --shortstat;\
+    done;"
+  root  = "rev-parse --show-toplevel"
+  bop   = !git stash && git pull && git stash pop
