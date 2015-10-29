@@ -39,3 +39,5 @@ bindkey "^[^[[C" forward-word
 
 # Fix Ctrl-A, Ctrl-B
 bindkey -e
+
+eval "$(docker-machine env default)"
