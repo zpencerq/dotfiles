@@ -27,4 +27,3 @@ if (( $+commands[fortune] )); then
   fortune | cowsay -f $(ls /usr/local/share/cows | gshuf -n1) | lolcat
   print
 fi
-

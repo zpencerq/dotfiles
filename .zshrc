@@ -15,7 +15,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias zshconfig="$EDITOR ~/.zshrc"
-alias vinstall="vim +BundleInstall +qall"
+alias vinstall="vim +PluginInstall +qall"
 alias tls="tmux list-sessions"
 alias ta="tmux attach-session"
 
