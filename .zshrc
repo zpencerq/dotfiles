@@ -10,15 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-alias zshconfig="$EDITOR ~/.zshrc"
-alias vinstall="vim +PluginInstall +qall"
-alias tls="tmux list-sessions"
-alias ta="tmux attach-session"
-
 # User configuration
 export DEFAULT_USER='zpencer'
 export PATH=$HOME/bin:/usr/local/bin:$PATH
