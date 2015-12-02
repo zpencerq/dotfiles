@@ -24,6 +24,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
-  fortune | cowsay -f $(ls /usr/local/share/cows | gshuf -n1) | lolcat
+  fortune | lolcat
   print
 fi
