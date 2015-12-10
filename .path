@@ -6,5 +6,5 @@ export GOPATH=~/Code/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:~/.cabal/bin
 export ANDROID_HOME=~/Library/Android/sdk
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home
-export JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+export JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
