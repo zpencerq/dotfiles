@@ -1,7 +1,7 @@
 # Path related configs
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
-export GOROOT="/usr/local/Cellar/go/1.4.1/libexec"
+export GOROOT="/usr/local/Cellar/go/1.5.2/libexec"
 export GOPATH=~/Code/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:~/.cabal/bin
