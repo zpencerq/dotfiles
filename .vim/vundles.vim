@@ -55,6 +55,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'dag/vim2hs'
 " Plugin 'jelera/vim-javascript-syntax'
+Plugin 'racer-rust/vim-racer'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'mxw/vim-jsx'
 
