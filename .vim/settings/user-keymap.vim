@@ -45,6 +45,9 @@ vmap <Leader>{ c{<C-R>"}<ESC>
 
 map <Leader>` ysiw`
 
+" / text object
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+
 " ==============================
 " Window/Tab/Split Manipulation
 " ==============================
