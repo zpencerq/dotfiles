@@ -21,8 +21,4 @@ bindkey "^[^[[C" forward-word
 # Fix Ctrl-A, Ctrl-B
 bindkey -e
 
-if [ $(docker-machine status default) = "Stopped" ]
-then
-  docker-machine start default
-fi
-eval "$(docker-machine env default)"
+autoload -U zmv
