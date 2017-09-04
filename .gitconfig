@@ -56,3 +56,5 @@
   name = Spencer Ellinor
 [branch]
   autosetuprebase = always
+[mergetool]
+  keepBackup = false
