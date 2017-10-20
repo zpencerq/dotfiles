@@ -1,5 +1,5 @@
 alias zshconfig="$EDITOR ~/.zshrc"
-alias vinstall="vim +PluginInstall +qall"
+alias pluginstall="vim +PlugInstall +qall"
 alias tls="tmux list-sessions"
 alias ta="tmux attach-session"
 

@@ -22,9 +22,9 @@ set hidden
 syntax on
 let mapleader=","
 
-" ========== Vundle Configuration ===========
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+" ============ Vim Plug Config ==============
+if filereadable(expand("~/.vim/plugs.vim"))
+  source ~/.vim/plugs.vim
 end
 
 " ============= Indentation =================

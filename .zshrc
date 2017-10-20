@@ -22,3 +22,5 @@ bindkey "^[^[[C" forward-word
 bindkey -e
 
 autoload -U zmv
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
