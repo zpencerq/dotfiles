@@ -48,15 +48,6 @@ map <Leader>` ysiw`
 " / text object
 onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 
-" ==============================
-" Window/Tab/Split Manipulation
-" ==============================
-" Move between split windows by using the four directions H, L, I, N
-nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> <C-k> <C-w>k
-nnoremap <silent> <C-j> <C-w>j
-
 nnoremap <silent> tn :tabnext<CR>
 nnoremap <silent> tp :tabprev<CR>
 
@@ -71,3 +62,5 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
