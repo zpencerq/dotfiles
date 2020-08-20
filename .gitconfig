@@ -6,7 +6,7 @@
         git --no-pager diff --shortstat;\
     done;"
   root  = "rev-parse --show-toplevel"
-  bop   = "pull --autostash"
+  bop   = !git stash && git pull && git stash pop
 
   lg = !"git lg1"
   lg = !"git lg1"
@@ -18,39 +18,11 @@
   lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
   lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 
-  uncommit = reset --soft HEAD^
-  unstage = reset
-  staged = diff --cached
-  ctags = "!.git/hooks/ctags"
-
-  tags = tag -l
-  branches = branch -a
-  remotes = remote -v
-
-  discard-merge = reset --hard HEAD
-  current-branch = rev-parse --abbrev-ref HEAD
-  addremove = !git add . && git add -u
-
-# List tags that don't look like version numbers ("other tags"). (My
-# main work repo has dozens of version-number tags and it's handy to
-# be able to exclude them from the output.)
-  otags = !git tags | grep -v "^v[0-9]"
-
-# Rewrite the last commit to include the currently-staged changes
-  amend = commit --amend -C HEAD --reset-author
-
-# Show the root directory of this repo. Useful in combination with
-#   alias cdr='cd $(git root)'
-# in my zshrc.
-  root = rev-parse --show-toplevel
-
-
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/zpencer/.gitignore
   attributesfile = ~/.gitattributes
   autocrlf = input
   pager = diff-so-fancy | less --tabs=1,5 -R
-	editor = vi
 
 [color]
   ui = always
@@ -86,5 +58,3 @@
   autosetuprebase = always
 [mergetool]
   keepBackup = false
-[url "git@github.com:"]
-    insteadOf = https://github.com/
