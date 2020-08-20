@@ -1,10 +1,28 @@
+# Simple calculator
+function calc() {
+	local result="";
+	result="$(printf "scale=10;$*\n" | bc --mathlib | tr -d '\\\n')";
+	#                       └─ default (when `--mathlib` is used) is 20
+	#
+	if [[ "$result" == *.* ]]; then
+		# improve the output for decimal numbers
+		printf "$result" |
+		sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
+		    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
+		    -e 's/0*$//;s/\.$//';  # remove trailing zeros
+	else
+		printf "$result";
+	fi;
+	printf "\n";
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
 # Change working directory to the top-most Finder window location
-function cdfinder() {
+function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
@@ -67,6 +85,24 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
+# Create a git.io short URL
+function gitio() {
+	if [ -z "${1}" -o -z "${2}" ]; then
+		echo "Usage: \`gitio slug url\`";
+		return 1;
+	fi;
+	curl -i http://git.io/ -F "url=${2}" -F "code=${1}";
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}";
+	sleep 1 && open "http://localhost:${port}/" &
+	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+}
+
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
@@ -74,6 +110,16 @@ function gz() {
 	local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
 	printf "orig: %d bytes\n" "$origsize";
 	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
+}
+
+# Syntax-highlight JSON strings or files
+# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
+function json() {
+	if [ -t 0 ]; then # argument
+		python -mjson.tool <<< "$*" | pygmentize -l javascript;
+	else # pipe
+		python -mjson.tool | pygmentize -l javascript;
+	fi;
 }
 
 # Run `dig` and display the most useful info
@@ -93,6 +139,15 @@ function escape() {
 # Decode \x{ABCD}-style Unicode escape sequences
 function unidecode() {
 	perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
+	# print a newline unless we’re piping the output to another program
+	if [ -t 1 ]; then
+		echo ""; # newline
+	fi;
+}
+
+# Get a character’s Unicode code point
+function codepoint() {
+	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
 	# print a newline unless we’re piping the output to another program
 	if [ -t 1 ]; then
 		echo ""; # newline
@@ -133,6 +188,26 @@ function getcertnames() {
 	fi;
 }
 
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# opens the given location
+function s() {
+	if [ $# -eq 0 ]; then
+		subl .;
+	else
+		subl "$@";
+	fi;
+}
+
+# `a` with no arguments opens the current directory in Atom Editor, otherwise
+# opens the given location
+function a() {
+	if [ $# -eq 0 ]; then
+		atom .;
+	else
+		atom "$@";
+	fi;
+}
+
 # `v` with no arguments opens the current directory in Vim, otherwise opens the
 # given location
 function v() {
@@ -161,66 +236,10 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# Activate the closest virtualenv by looking in parent directories.
-activate_virtualenv() {
-    if [ -f venv/bin/activate ]; then . venv/bin/activate;
-    elif [ -f ../venv/bin/activate ]; then . ../venv/bin/activate;
-    elif [ -f ../../venv/bin/activate ]; then . ../../venv/bin/activate;
-    elif [ -f ../../../venv/bin/activate ]; then . ../../../venv/bin/activate;
-    fi
-}
-
-# Find the directory of the named Python module.
-python_module_dir () {
-    echo "$(python -c "import os.path as _, ${1}; \
-        print _.dirname(_.realpath(${1}.__file__[:-1]))"
-        )"
-}
-
-# By @ieure; copied from https://gist.github.com/1474072
-#
-# It finds a file, looking up through parent directories until it finds one.
-# Use it like this:
-#
-#   $ ls .tmux.conf
-#   ls: .tmux.conf: No such file or directory
-#
-#   $ ls `up .tmux.conf`
-#   /Users/grb/.tmux.conf
-#
-#   $ cat `up .tmux.conf`
-#   set -g default-terminal "screen-256color"
-#
-function up()
-{
-    local DIR=$PWD
-    local TARGET=$1
-    while [ ! -e $DIR/$TARGET -a $DIR != "/" ]; do
-        DIR=$(dirname $DIR)
-    done
-    test $DIR != "/" && echo $DIR/$TARGET
-}
-
-# Switch projects
-function p() {
-    proj=$(ls ~/Code | fzf --print-query)
-    if [[ -n "$proj" ]]; then
-        cd ~/Code/$proj
-        if [[ -e "Gemfile" ]]; then
-            local ruby_version
-            ruby_version=$(ruby -ne $'print $1 if $_ =~ /ruby \'([0-9.]+)\'/' Gemfile)
-            chruby "$ruby_version"
-            gem_home .
-        fi
-        if [[ -d ~/secrets/$proj ]]; then
-            . ~/secrets/$proj/secrets.sh
-        fi
-    fi
-}
-
 # Edit a note
 function n() {
-    local note=$(ls ~/notes | fzf --print-query --preview 'head -100 ~/notes/{}')
+    mkdir -p ~/notes
+    local note=$(ls ~/notes | fzf --print-query --preview 'head -100 ~/notes/{}' | tail -1)
     if [[ -n "$note" ]]; then
         (cd ~/notes && vi "${note}")
     fi
