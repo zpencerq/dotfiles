@@ -1,0 +1,11 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["*.json" ],
+    "coc.preferences.formatOnType": false,
+    "coc.preferences.formatOnTypeFiletypes": [],
+    "coc.preferences.formatOnInsertLeave": false,
+    "jedi.executable.command": "~/bin/jedi-language-server",
+    "python.pythonPath": "~/bin/python",
+    "json.format.enable": true,
+    "suggest.enablePreview": true,
+    "suggest.enablePreselect": true
+}
