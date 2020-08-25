@@ -27,7 +27,6 @@ bindkey -e
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. $HOME/.asdf/asdf.sh
+. $(brew --prefix asdf)/asdf.sh
 autoload -U +X bashcompinit && bashcompinit
-source ~/.dbt-completion.bash
 bindkey -v

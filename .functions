@@ -212,9 +212,9 @@ function a() {
 # given location
 function v() {
 	if [ $# -eq 0 ]; then
-		vim .;
+		nvim .;
 	else
-		vim "$@";
+		nvim "$@";
 	fi;
 }
 
@@ -241,6 +241,6 @@ function n() {
     mkdir -p ~/notes
     local note=$(ls ~/notes | fzf --print-query --preview 'head -100 ~/notes/{}' | tail -1)
     if [[ -n "$note" ]]; then
-        (cd ~/notes && vi "${note}")
+        (cd ~/notes && nvim "${note}")
     fi
 }
