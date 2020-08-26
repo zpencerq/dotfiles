@@ -2134,6 +2134,12 @@
         "options": {
           "full_name": "sherlock"
         }
+      },
+      "alfred": {
+        "version": "4.1_1167",
+        "options": {
+          "full_name": "alfred"
+        }
       }
     }
   },
