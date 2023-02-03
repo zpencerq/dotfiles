@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ -f 'pyproject.toml' ]; then
-    poetry run jedi-language-server $@
-else
-    /usr/bin/env jedi-language-server $@
-fi

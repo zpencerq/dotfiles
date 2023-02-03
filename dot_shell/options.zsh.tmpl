@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+# switch to emacs mode instead of using vi mode
+set -o vi
+
+VIM_MODE_ESC_PREFIXED_WANTED='bdfhul.g'  # Default is 'bdf.g'
+
+# slashes treated as word separators
+WORDCHARS=${WORDCHARS/\/}
+
+# https://stackoverflow.com/a/29403520/2465955
+# note: use iTerm2 Natural Text Editing keymappings preset
+# changes hex 0x15 and 0x18 0x7f to delete everything to the left of
+# the cursor, rather than the whole line.
+bindkey "^U" backward-kill-line
+bindkey "^X\\x7f" backward-kill-line
+
+# executed after history-substring-search is loaded
+__zinit_history_substring_search_atload () {
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+}
+
+source $HOME/.shell/history.zsh  # zsh history config

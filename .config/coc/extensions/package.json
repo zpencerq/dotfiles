@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "coc-diagnostic": ">=0.7.0",
-    "coc-jedi": ">=0.14.2",
-    "coc-json": ">=1.2.6",
-    "coc-sql": ">=0.3.2",
-    "coc-yaml": ">=1.0.5"
-  }
-}

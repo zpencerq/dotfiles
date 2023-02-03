@@ -1,0 +1,16 @@
+[".tmux.conf"]
+    type = "file"
+    url = "https://github.com/gpakosz/.tmux/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    [".tmux.conf".filter]
+	command = "tar"
+	args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", ".tmux-master/.tmux.conf"]
+
+[".config/nvim"]
+    type = "archive"
+    url = "https://github.com/AstroNvim/AstroNvim/archive/refs/tags/v2.11.8.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
