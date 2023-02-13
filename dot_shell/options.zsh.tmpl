@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# switch to emacs mode instead of using vi mode
+# switch to vi mode
 set -o vi
 
 VIM_MODE_ESC_PREFIXED_WANTED='bdfhul.g'  # Default is 'bdf.g'
@@ -14,6 +14,10 @@ WORDCHARS=${WORDCHARS/\/}
 # the cursor, rather than the whole line.
 bindkey "^U" backward-kill-line
 bindkey "^X\\x7f" backward-kill-line
+
+# make delete key actually delete
+bindkey '^[[3~' vi-delete-char
+bindkey -a '^[[3~' vi-delete-char
 
 # executed after history-substring-search is loaded
 __zinit_history_substring_search_atload () {
