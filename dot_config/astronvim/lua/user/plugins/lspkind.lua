@@ -1,6 +1,7 @@
 return {
   "onsails/lspkind.nvim",
   opts = function(_, opts)
+    opts.mode = 'symbol_text'
     -- use codicons preset
     opts.preset = "codicons"
     -- set some missing symbol types
