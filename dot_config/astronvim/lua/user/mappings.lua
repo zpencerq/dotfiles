@@ -42,9 +42,13 @@ return {
       desc = "Next buffer",
     },
 
+    ["<leader>'"] = { "viW:Translate EN<cr>", desc = "Translate to English" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  v = {
+    ["<leader>'"] = { ":Translate EN<cr>", desc = "Translate to English" },
+  }
 }
