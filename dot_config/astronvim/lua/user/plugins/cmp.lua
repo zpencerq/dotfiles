@@ -20,6 +20,9 @@ return {
           side_padding = 0,
         },
       },
+      experimental = {
+        ghost_text = true,
+      },
       sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },
