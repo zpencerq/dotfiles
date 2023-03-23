@@ -42,7 +42,7 @@ return {
       desc = "Next buffer",
     },
 
-    ["<leader>'"] = { "viW:Translate EN<cr>", desc = "Translate to English" },
+    ["<leader>'"] = { "V:Translate EN<cr>", desc = "Translate to English" },
   },
   t = {
     -- setting a mapping to false will disable it
