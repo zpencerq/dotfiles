@@ -7,6 +7,7 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
+    clipboard = "",
 
     conceallevel = 2, -- enable conceal
     list = true, -- show whitespace characters
