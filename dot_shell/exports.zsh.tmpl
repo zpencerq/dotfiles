@@ -6,6 +6,8 @@
 
 # === General ===
 
+export PATH="$PATH:$(readlink -f ~)/bin"
+
 # Language
 export LANG=en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
@@ -42,6 +44,16 @@ eval "$(/usr/local/bin/brew shellenv)"
 {{ end }}
 
 {{ end }}
+
+
+# OCTAVIA CLI 0.44.1
+OCTAVIA_ENV_FILE=/Users/spencer/.octavia
+export OCTAVIA_ENABLE_TELEMETRY=False
+
+# pnpm
+export PNPM_HOME="/Users/spencer/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
 
 # grep colors
 export GREP_COLOR='37;45'           # BSD.
