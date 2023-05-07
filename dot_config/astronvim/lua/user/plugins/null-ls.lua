@@ -11,7 +11,11 @@ return {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
-      null_ls.builtins.formatting.black
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.sqlfluff.with({
+        extra_args = { "--templater", "dbt" }
+        timeout = 10000
+      }),
     }
     return config -- return final config table
   end,
