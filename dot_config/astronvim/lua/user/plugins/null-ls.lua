@@ -13,7 +13,7 @@ return {
       -- null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.black,
       null_ls.builtins.formatting.sqlfluff.with({
-        extra_args = { "--templater", "dbt" }
+        extra_args = { "--templater", "dbt" },
         timeout = 10000
       }),
     }
