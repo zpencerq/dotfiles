@@ -23,6 +23,7 @@
   attributesfile = ~/.gitattributes
   autocrlf = input
   pager = delta
+  editor = nvim
 
 [color]
   ui = always
