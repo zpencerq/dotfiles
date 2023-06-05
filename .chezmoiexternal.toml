@@ -10,7 +10,7 @@
 
 [".config/nvim"]
     type = "archive"
-    url = "https://github.com/AstroNvim/AstroNvim/archive/refs/tags/v3.5.1.tar.gz"
+    url = "https://github.com/AstroNvim/AstroNvim/archive/refs/tags/v3.18.1.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
