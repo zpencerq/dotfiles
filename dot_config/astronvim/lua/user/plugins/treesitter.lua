@@ -6,7 +6,7 @@ return {
         "andymass/vim-matchup",
         init = function() vim.g.matchup_matchparen_deferred = 1 end,
       },
-      "mrjones2014/nvim-ts-rainbow",
+      "HiPhish/nvim-ts-rainbow2",
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,

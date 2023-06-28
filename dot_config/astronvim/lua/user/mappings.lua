@@ -3,12 +3,17 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+local utils = require "user.utils"
+local astro_utils = require "astronvim.utils"
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 
 return {
   -- first key is the mode
   n = {
+    -- better search
+    n = { utils.better_search "n", desc = "Next search" },
+    N = { utils.better_search "N", desc = "Previous search" },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
