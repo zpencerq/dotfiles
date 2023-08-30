@@ -319,3 +319,4 @@ bind C-b send-prefix
 
 # move status line to top
 #set -g status-position top
+set-option -g allow-passthrough on
