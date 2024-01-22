@@ -12,4 +12,10 @@ return {
     event = "User AstroFile",
     config = function() require("lsp_lines").setup() end,
   },
+  {
+  "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  }
 }

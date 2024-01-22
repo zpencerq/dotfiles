@@ -6,7 +6,6 @@
         git --no-pager diff --shortstat;\
     done;"
   root  = "rev-parse --show-toplevel"
-  bop   = !git stash && git pull && git stash pop
 
   lg = !"git lg1"
   lg = !"git lg1"

@@ -23,6 +23,7 @@ return {
     ["<leader>hl"] = { ":HopLineStart<cr>", desc = "Hop Line Start" },
     ["<leader>hp"] = { ":HopPattern<cr>", desc = "Hop Pattern" },
     ["<leader>hw"] = { ":HopWord<cr>", desc = "Hop Word" },
+
     ["<leader>hf"] = {
       function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR })
@@ -69,5 +70,10 @@ return {
   },
   v = {
     ["<leader>'"] = { ":Translate EN<cr>", desc = "Translate to English" },
+  },
+  [{'o', 'v', 'n'}] = {
+    ["<space>"]   = { "<Cmd>HopWord<cr>", desc = "Hop Word", noremap = true, silent = true },
+
+    ["<CR>"]      = { "<Cmd>HopPattern<cr>", desc = "Hop Pattern", noremap = true, silent = true },
   }
 }
