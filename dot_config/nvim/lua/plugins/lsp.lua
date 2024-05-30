@@ -13,9 +13,20 @@ return {
     config = function() require("lsp_lines").setup() end,
   },
   {
-  "j-hui/fidget.nvim",
+    "j-hui/fidget.nvim",
+    event = "BufRead",
     opts = {
       -- options
     },
-  }
+  },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   event = "User AstroFile",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {
+  --      settings = {
+  --       tsserver_plugins = {  "@monodon/typescript-nx-imports-plugin" },
+  --     }
+  --   },
+  -- }
 }

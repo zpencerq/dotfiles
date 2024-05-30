@@ -18,8 +18,8 @@ return {
     }
   end,
   mc = function(agent)
-    local magicoder = require "user.models.magicoder"
-    local chatml_fmt = require "user.models.format.chatml"
+    local magicoder = require "models.magicoder"
+    local chatml_fmt = require "models.format.chatml"
     local ollama = require('model.providers.ollama')
 
     return {

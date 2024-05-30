@@ -1,9 +1,9 @@
-local M = require "user.models"
-local magicoder = require "user.models.magicoder"
-local deepseek = require "user.models.deepseek"
-local agents = require "user.models.agents"
-local presets = require "user.models.presets"
-local chatml_fmt = require "user.models.format.chatml"
+local M = require "models"
+local magicoder = require "models.magicoder"
+local deepseek = require "models.deepseek"
+local agents = require "models.agents"
+local presets = require "models.presets"
+local chatml_fmt = require "models.format.chatml"
 
 return {
   {
@@ -78,9 +78,9 @@ return {
             create = input_if_selection,
             run = zephyr_fmt.chat,
           },
+          mc = presets.mc(agents.writer),
           l = presets.z(agents.techlead),
           p = presets.z(agents.product),
-          mc = presets.mc(agents.writer)
         },
 
         cmd = { 'M', 'Model', 'Mchat' },

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    -- commit = "364b86ec8ea88e4a77ba676b93fb10829d6a9cb3",
     dependencies = {
       {
         "andymass/vim-matchup",

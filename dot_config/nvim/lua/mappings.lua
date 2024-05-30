@@ -3,10 +3,9 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
-local utils = require "user.utils"
-local astro_utils = require "astronvim.utils"
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
+local utils = require "utils"
+local hop = require "hop"
+local directions = require("hop.hint").HintDirection
 
 return {
   -- first key is the mode
@@ -14,8 +13,7 @@ return {
     -- better search
     n = { utils.better_search "n", desc = "Next search" },
     N = { utils.better_search "N", desc = "Previous search" },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
+    -- tables with the `name` key will be registered with which-key if it's installed this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     ["<leader>h"] = { name = "Hop" },
 
@@ -25,16 +23,12 @@ return {
     ["<leader>hw"] = { ":HopWord<cr>", desc = "Hop Word" },
 
     ["<leader>hf"] = {
-      function()
-        hop.hint_char1({ direction = directions.AFTER_CURSOR })
-      end,
-      desc = "Hop Forward"
+      function() hop.hint_char1 { direction = directions.AFTER_CURSOR } end,
+      desc = "Hop Forward",
     },
     ["<leader>ht"] = {
-      function()
-        hop.hint_char1({ direction = directions.BEFORE_CURSOR })
-      end,
-      desc = "Hop Backward"
+      function() hop.hint_char1 { direction = directions.BEFORE_CURSOR } end,
+      desc = "Hop Backward",
     },
     ["<leader>x"] = { desc = "󰒡 Trouble" },
     ["<leader>xx"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
@@ -46,23 +40,28 @@ return {
     ["<leader>."] = { ":noh<cr>", desc = "No highlight" },
 
     ["H"] = {
-      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
     ["<S-Tab>"] = {
-      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
     ["<Tab>"] = {
-      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
     ["L"] = {
-      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
 
     ["<leader>'"] = { "V:Translate EN<cr>", desc = "Translate to English" },
+    ["<leader>r"] = { ":LspRestart<cr>", desc = "Restart LSP" },
+    ["<leader>z"] = {
+      function() require("zen-mode").toggle() end,
+      desc = "Zen Mode",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -71,9 +70,9 @@ return {
   v = {
     ["<leader>'"] = { ":Translate EN<cr>", desc = "Translate to English" },
   },
-  [{'o', 'v', 'n'}] = {
-    ["<space>"]   = { "<Cmd>HopWord<cr>", desc = "Hop Word", noremap = true, silent = true },
+  [{ "o", "v", "n" }] = {
+    ["<space>"] = { "<Cmd>HopWord<cr>", desc = "Hop Word", noremap = true, silent = true },
 
-    ["<CR>"]      = { "<Cmd>HopPattern<cr>", desc = "Hop Pattern", noremap = true, silent = true },
-  }
+    ["<CR>"] = { "<Cmd>HopPattern<cr>", desc = "Hop Pattern", noremap = true, silent = true },
+  },
 }

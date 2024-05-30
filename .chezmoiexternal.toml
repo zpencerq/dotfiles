@@ -7,10 +7,3 @@
     [".tmux.conf".filter]
 	command = "tar"
 	args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", ".tmux-master/.tmux.conf"]
-
-[".config/nvim"]
-    type = "archive"
-    url = "https://github.com/AstroNvim/AstroNvim/archive/refs/tags/v3.42.0.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
